@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  height: 100%;
+  color: #0c2233;
+}
+
+.colorDisplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: 1 / 1 / 2 / 3;
+  border: 8px solid;
+  box-sizing: border-box;
+  font-size: 16vmin;
+  text-transform: capitalize;
+}
+.colorDisplay::after {
+  content: attr(data-color);
+}
+
+.colorDisplay[data-color="yellow"] {
+  background-color: #f0d43a;
+}
+.colorDisplay[data-color="white"] {
+  background-color: #f5f4e8;
+}
+.colorDisplay[data-color="red"] {
+  background-color: #f23557;
+}
+.colorDisplay[data-color="blue"] {
+  background-color: #22b2da;
+}
+
+.colorDisplay[data-color=""] {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAAXNSR0IArs4c6QAAABtJREFUGFdjTKi+7cuAAzCCJBe0qm7GJj/oJAGwGxoLJP3XYQAAAABJRU5ErkJggg==
+  ) repeat;
+}
+
+.colorButton {
+  color: #0c2233;
+  font-size: 8vmin;
+  text-transform: capitalize;
+}
+
+.colorButton[data-color="yellow"] {
+  background-color: #f0d43a;
+}
+.colorButton[data-color="white"] {
+  background-color: #f5f4e8;
+}
+.colorButton[data-color="red"] {
+  background-color: #f23557;
+}
+.colorButton[data-color="blue"] {
+  background-color: #22b2da;
+}
+
+.colorButton[data-count]::after {
+	content: attr(data-color) ': ' attr(data-count);
+}
+
+
