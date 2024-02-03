@@ -16,6 +16,7 @@ body {
 
 .colorDisplay {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   grid-area: 1 / 1 / 2 / 3;
@@ -24,6 +25,26 @@ body {
   font-size: 16vmin;
   text-transform: capitalize;
 }
+
+.reset {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  top: 8px;
+  right: 8px;
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #155263;
+  box-shadow: 0 2px 5px 0 #0003;
+}
+
+.reset:disabled {
+  filter: contrast(50%);
+}
+
 .colorDisplay::after {
   content: attr(data-color);
 }

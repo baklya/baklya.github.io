@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-	    <meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width">
-	    <title>Sycrakea color counter</title>
-	    <link href="style.css" rel="stylesheet" media="all">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Sycrakea color counter</title>
+        <link href="style.css" rel="stylesheet" media="all">
     </head>
     <body>
         <div class="container">
-          <div id="colorDisplay" class="colorDisplay" data-color=""></div>
+          <div id="colorDisplay" class="colorDisplay" data-color="">
+            <button id="reset" class="reset" disabled>
+                <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M10 6.13V8L6 5.5 10 3v2.1A5 5 0 1 1 4 10a.5.5 0 0 1 1 0 4 4 0 1 0 5-3.87Z" fill="currentColor"/></svg>
+            </button>
+          </div>
           <button class="colorButton" data-color="yellow" data-count="0" style="--data-count: 0;"></button>
           <button class="colorButton" data-color="white" data-count="0" style="--data-count: 0;"></button>
           <button class="colorButton" data-color="red" data-count="0" style="--data-count: 0;"</button>
           <button class="colorButton" data-color="blue" data-count="0" style="--data-count: 0;"></button>
         </div>
-	    <script src="bundle.js"></script>
+        <script src="bundle.js"></script>
     </body>
 </html>

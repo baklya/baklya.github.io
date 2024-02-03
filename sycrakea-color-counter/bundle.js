@@ -23,10 +23,10 @@ function handleClick() {
     saveState[color] = counts.get(color) || 0;
   });
   history.pushState(saveState, '');
-
 }
 
 const colorDisplay = document.getElementById('colorDisplay');
+const resetButton = document.getElementById('reset');
 function updateColorDisplay() {
   const countArray = allColors.map((color) => counts.get(color) || 0);
   let maxValue = 0;
@@ -59,6 +59,28 @@ function updateColorDisplay() {
       item.removeAttribute('disabled');
     });
   }
+
+  if (maxValue > 0) {
+    resetButton.removeAttribute('disabled');
+  } else {
+    resetButton.setAttribute('disabled', true);
+  }
+}
+
+resetButton.addEventListener('click', reset);
+function reset() {
+  Array.from(buttons).forEach(function(item) {
+    item.setAttribute('data-count', 0);
+    item.style.setProperty('--data-count', 0)
+  });
+  counts.clear();
+  updateColorDisplay();
+
+  const saveState = {};
+  allColors.forEach((color) => {
+    saveState[color] = 0;
+  });
+  history.pushState(saveState, '');
 }
 
 window.addEventListener("popstate", (event) => {
