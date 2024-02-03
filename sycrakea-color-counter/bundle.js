@@ -1,5 +1,8 @@
 const allColors = ['yellow', 'white', 'red', 'blue'];
 const counts = new Map();
+const MAX_COLOR_VALUE = 5;
+
+document.body.style.setProperty('--max-color-value', MAX_COLOR_VALUE);
 
 var buttons = document.getElementsByClassName('colorButton');
 Array.from(buttons).forEach(function(item) {
@@ -11,6 +14,7 @@ function handleClick() {
   const count = (counts.get(currentColor) || 0) + 1;
   counts.set(currentColor, count);
   this.setAttribute('data-count', count);
+  this.style.setProperty('--data-count', count)
 
   updateColorDisplay();
 
@@ -31,7 +35,7 @@ function updateColorDisplay() {
     	maxValue = count;
     }
   });
-  
+
   const maxColors = [];
   allColors.forEach((color) => {
   	const count = counts.get(color) || 0;
@@ -45,6 +49,16 @@ function updateColorDisplay() {
   } else {
     colorDisplay.setAttribute('data-color', '');
   }
+
+  if (maxValue >= MAX_COLOR_VALUE) {
+    Array.from(buttons).forEach(function(item) {
+      item.setAttribute('disabled', true);
+    });
+  } else {
+    Array.from(buttons).forEach(function(item) {
+      item.removeAttribute('disabled');
+    });
+  }
 }
 
 window.addEventListener("popstate", (event) => {
@@ -53,6 +67,7 @@ window.addEventListener("popstate", (event) => {
   });
   Array.from(buttons).forEach(function(item) {
     item.setAttribute('data-count', event.state[item.dataset.color]);
+    item.style.setProperty('--data-count', event.state[item.dataset.color])
   });
   updateColorDisplay();
 });
